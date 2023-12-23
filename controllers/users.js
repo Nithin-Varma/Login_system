@@ -42,12 +42,12 @@ exports.login = async (req, res) => {
             msg_type: "error",
           });
         } else {
-          if (!(await bcrypt.compare(password, result[0].Pass))) {
+          if (result.length > 0 && !(await bcrypt.compare(password, result[0].Pass))) {
             return res.status(401).render("login", {
               msg: "password error",
               msg_type: "error",
             });
-          } else {
+           } else {
             const id = result[0].ID;
             const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
               expiresIn: process.env.JWT_EXPIRES,
