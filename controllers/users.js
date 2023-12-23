@@ -65,6 +65,7 @@ exports.login = async (req, res) => {
   }
 };
 exports.register = (req, res) => {
+  console.log("kuch tho ho rha hai......")
   console.log(req.body);
   /*
   const name = req.body.name;
@@ -76,12 +77,13 @@ exports.register = (req, res) => {
     //res.send("Form Submitted");
   */
   const { name, email, password, confirm_password } = req.body;
+  console.log("wait wait")
   db.query(
     "select email from users where email=?",
     [email],
     async (error, result) => {
       if (error) {
-        console.log(error);
+        console.log("error aagaya", error);
       }
 
       if (result.length > 0) {
@@ -105,7 +107,7 @@ exports.register = (req, res) => {
           if (error) {
             console.log(error);
           } else {
-            //console.log(result);
+            console.log(result);
             return res.render("register", {
               msg: "User Registration Success",
               msg_type: "good",
