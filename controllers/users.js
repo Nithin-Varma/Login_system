@@ -9,16 +9,18 @@ const db = mysql.createConnection({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASS,
   database: process.env.DATABASE,
-  // username: { type: String, required: true, index: { unique: true } },
-  // password: { type: String, required: true, select: false },
+  username: { type: String, required: true, index: { unique: true } },
+  password: { type: String, required: true, select: false },
 });
 
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log("nsvneuovnoenvoneoneovnjefnvjfnjfnjfnvjfnfnjvnfjvnfjvnjf")
+    console.log(email,password)
     if (!email || !password) {
       return res.status(400).render("login", {
-        msg: "Please Enter Your Email and Password",
+        msg: "Please Enter Your Email and Passworddddddddddddddddddddddddd",
         msg_type: "error",
       });
     }
@@ -30,13 +32,13 @@ exports.login = async (req, res) => {
         console.log(result);
         if (result.length <= 0) {
           return res.status(401).render("login", {
-            msg: "Please Enter Your Email and Password",
+            msg: "db query",
             msg_type: "error",
           });
         } else {
           if (!(await bcrypt.compare(password, result[0].Pass))) {
             return res.status(401).render("login", {
-              msg: "Please Enter Your Email and Password",
+              msg: "password error",
               msg_type: "error",
             });
           } else {
