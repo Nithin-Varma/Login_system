@@ -40,6 +40,6 @@ hbs.registerPartials(partialsPath);
 app.use("/", require("./routers/pages"));
 app.use("/auth", require("./routers/auth"));
 
-app.listen("https://zany-pink-slug-coat.cyclic.app", () => {
-    console.log("Server Started @Port 5000");
+app.listen("5000", () => {
+    console.log("Server Started ");
 })
