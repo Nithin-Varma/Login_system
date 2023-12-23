@@ -79,7 +79,7 @@ exports.register = (req, res) => {
     [email],
     async (error, result) => {
       if (error) {
-        confirm.log(error);
+        console.log(error);
       }
 
       if (result.length > 0) {
