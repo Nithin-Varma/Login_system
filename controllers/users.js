@@ -1,4 +1,5 @@
-const mysql = require("mysql");
+// const mysql = require("mysql");
+const mysql = require('mysql2');
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
 const jwt = require("jsonwebtoken");
@@ -9,8 +10,8 @@ const db = mysql.createConnection({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASS,
   database: process.env.DATABASE,
-  username: { type: String, required: true, index: { unique: true } },
-  password: { type: String, required: true, select: false },
+  // username: { type: String, required: true, index: { unique: true } },
+  // password: { type: String, required: true, select: false },
 });
 
 exports.login = async (req, res) => {
