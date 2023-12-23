@@ -15,6 +15,11 @@ const db = mysql.createConnection({
      user: process.env.DATABASE_USER,
      password: process.env.DATABASE_PASS,
      database: process.env.DATABASE,
+    connectTimeout: 1000000000, // Set a longer timeout
+    agent: {
+      keepAlive: true,
+      maxSockets: Infinity,
+    },
 });
 
 console.log(typeof process.env.DATABASE_HOST);
