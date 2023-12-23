@@ -30,6 +30,7 @@ exports.login = async (req, res) => {
         msg_type: "error",
       });
     }
+    console.log("not an error if password or email")
 
     db.query(
       "select * from users where email=?",
@@ -42,7 +43,7 @@ exports.login = async (req, res) => {
             msg_type: "error",
           });
         } else {
-          if (result.length > 0 && !(await bcrypt.compare(password, result[0].Pass))) {
+          if (result.length > 0 && !(await bcrypt.compare(password, result[0].pass))) {
             return res.status(401).render("login", {
               msg: "password error",
               msg_type: "error",
