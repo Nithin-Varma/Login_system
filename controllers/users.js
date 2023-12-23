@@ -62,7 +62,9 @@ exports.login = async (req, res) => {
               httpOnly: true,
             };
             res.cookie("pavitrabandhan", token, cookieOptions);
-            res.status(200).redirect("/index");
+            window.location.href = "/index"
+            // res.status(200).redirect("/index");
+
           }
         }
       },
